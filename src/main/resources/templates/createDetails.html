@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body style = "
+	    display: flex;
+	    flex-direction: column;
+	    justify-content: space-around;">
+	<script>
+ function generatePassword(){
+        var requestOptions = {
+        method: 'GET',
+        };
+        fetch("/rest/generatePassword", requestOptions)
+        .then(response => response.text())
+        .then(result => {
+        	document.getElementById("pass").value = result;
+        })
+        .catch(error => console.log('error', error));
+    }
+ </script>
+ 	<h2 align="center">Generate New Password</h2>
+	<form th:action="@{/pm/saveAction/}" th:object="${createDetails}" method="post">
+
+		<table border="1" style="alige:center;">
+			<tr>
+				<th colspan="2">Enter Web Site Name</th>
+			</tr>
+			<tr>
+				<input id="id" placeholder="id"
+					type="text" th:field="*{id}" hidden="true"/>
+				<td><input id="webSiteName" placeholder="Web Site Name"
+					type="text" th:field="*{webSiteName}" /></td>
+				<td colspan="2"><button type="button" onclick="generatePassword()">
+						Generate Password</button></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<div>
+						<input id="pass" placeholder="Generated Password Will show here"
+							type="text" th:field="*{password}" readonly="readonly" />
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Save" /></td>
+				<td>
+					<button type="button"
+						th:onclick="|window.location.href='/pm/showWelcomePage'|">Cancle</button>
+				</td>
+			</tr>
+		</table>
+	</form>
+
+
+</body>
+</html>
