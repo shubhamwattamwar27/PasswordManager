@@ -43,7 +43,6 @@ public class PasswordManagerController {
 	@GetMapping("/showWelcomePage")
 	public String showWelcomePage(Model map) {
 		System.out.println("in show login form");
-		PasswordDetails pd =  (passwordManagerService.getPasswordAllDetails()).get(0);
 		map.addAttribute("details", passwordManagerService.getPasswordAllDetails());
 		return "welcome"; // forward view : default
 	}
