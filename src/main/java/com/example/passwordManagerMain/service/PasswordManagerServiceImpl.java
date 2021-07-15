@@ -31,8 +31,10 @@ public class PasswordManagerServiceImpl implements PasswordManagerService{
 	}
 	@Override
 	public PasswordDetails saveDetails(PasswordDetails passwordDetails) {
-		
-		return pmd.save(passwordDetails);
+		if(passwordDetails.getId()!=null)
+			return pmd.save(passwordDetails);
+		else
+			return pmd.save(passwordDetails);
 	}
 	@Override
 	public PasswordDetails findById(Long id) {

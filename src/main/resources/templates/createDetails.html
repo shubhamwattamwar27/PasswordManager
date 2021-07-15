@@ -20,9 +20,21 @@
         })
         .catch(error => console.log('error', error));
     }
+ function validateFields()
+ {
+	 	var webSiteName = document.getElementById("webSiteName").value;
+		var pass = document.getElementById("pass").value;
+		if(webSiteName === "" || pass === "")
+		{
+			alert("Web Site Name or Password is not empty");
+			return false;
+		}
+		return true;
+		
+ }
  </script>
  	<h2 align="center">Generate New Password</h2>
-	<form th:action="@{/pm/saveAction/}" th:object="${createDetails}" method="post">
+	<form th:action="@{/passwordManager/saveAction/}" th:object="${createDetails}" method="post" onSubmit="return validateFields()">
 
 		<table border="1" style="alige:center;">
 			<tr>
@@ -37,18 +49,16 @@
 						Generate Password</button></td>
 			</tr>
 			<tr>
-				<td colspan="2">
-					<div>
+				<td colspan="4">
 						<input id="pass" placeholder="Generated Password Will show here"
 							type="text" th:field="*{password}" readonly="readonly" />
-					</div>
 				</td>
 			</tr>
 			<tr>
 				<td><input type="submit" value="Save" /></td>
 				<td>
 					<button type="button"
-						th:onclick="|window.location.href='/pm/showWelcomePage'|">Cancle</button>
+						th:onclick="|window.location.href='/passwordManager/'|">Cancle</button>
 				</td>
 			</tr>
 		</table>

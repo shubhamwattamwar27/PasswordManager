@@ -9,7 +9,7 @@
 	    flex-direction: column;
 	    justify-content: space-around;">
 <h2 align="center">Web Based Password Manager</h2>
-	<a href="/pm/createPage">Create New Password</a>
+	<a href="/passwordManager/createPage">Create New Password</a>
 	<table border="1">
 		<thead>
 			<tr>
@@ -21,16 +21,16 @@
 		</thead>
 		<tbody>
 			<tr th:if="${details.empty}">
-				<td colspan="2">No Passwords are available</td>
+				<td colspan="4">No Passwords are available</td>
 			</tr>
 			<tr th:each="detail : ${details}">
-				<td colspan="2"><span th:text="${detail.companyName}">
+				<td colspan="2"><span th:text="${detail.webSiteName}">
 						Company Name </span></td>
 				<td colspan="2"><span th:text="${detail.password}">
 						Password </span></td>
 				<td>
 					<form action="#"
-						th:action="@{/pm/getSpecificCompany/} + ${{detail.id}}"
+						th:action="@{/passwordManager/getSpecificCompany/} + ${{detail.id}}"
 						method="get">
 						<button th:id="'edit_button' + ${detail.id}" type="submit">
 							<i>Edit</i>
@@ -39,7 +39,7 @@
 				</td>
 				<td>
 					<form action="#"
-						th:action="@{/pm/deleteSpecificDetailsById/} + ${{detail.id}}"
+						th:action="@{/passwordManager/deleteSpecificDetailsById/} + ${{detail.id}}"
 						method="get">
 						<button th:id="'edit_button' + ${detail.id}" type="submit">
 							<i>Delete</i>
@@ -49,6 +49,6 @@
 			</tr>
 		</tbody>
 	</table>
-	<a href="/pm/createPage">Create New Password</a>
+	<a href="/passwordManager/createPage">Create New Password</a>
 </body>
 </html>

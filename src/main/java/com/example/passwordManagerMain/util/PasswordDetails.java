@@ -8,41 +8,46 @@ import javax.persistence.Id;
 
 
 
+
+
+
+
 @Entity
 public class PasswordDetails {
 
-	private long id;
-	private String companyName;
+	private Long id;
+	
+	private String webSiteName;
 	
 	private String password;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public PasswordDetails(long id, String companyName, String password) {
+	public PasswordDetails(long id, String webSiteName, String password) {
 		super();
 		this.id = id;
-		this.companyName = companyName;
+		this.webSiteName = webSiteName;
 		this.password = password;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	@Column
-	public String getCompanyName() {
-		return companyName;
+	@Column(nullable = false)
+	public String getWebSiteName() {
+		return webSiteName;
 	}
 
-	public void setCompanyName(String companyName) {
-		this.companyName = companyName;
+	public void setWebSiteName(String webSiteName) {
+		this.webSiteName = webSiteName;
 	}
 
-	@Column
+	@Column(nullable = false)
 	public String getPassword() {
 		return password;
 	}
@@ -51,9 +56,9 @@ public class PasswordDetails {
 		this.password = password;
 	}
 
-	public PasswordDetails(String companyName, String password) {
+	public PasswordDetails(String webSiteName, String password) {
 		super();
-		this.companyName = companyName;
+		this.webSiteName = webSiteName;
 		this.password = password;
 	}
 
@@ -63,7 +68,7 @@ public class PasswordDetails {
 
 	@Override
 	public String toString() {
-		return "PasswordDetails [companyName=" + companyName + ", password=" + password + "]";
+		return "PasswordDetails [webSiteName=" + webSiteName + ", password=" + password + "]";
 	}
 	
 	
