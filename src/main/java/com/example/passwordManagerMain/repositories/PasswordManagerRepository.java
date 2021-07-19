@@ -17,5 +17,9 @@ public interface PasswordManagerRepository extends JpaRepository<PasswordDetails
 	
 	Optional<PasswordDetails> findById(Long id);
 	
+	PasswordDetails getById(Long id);
+	
 	void deleteById(Long id);
+	
+	void deleteAll();
 }

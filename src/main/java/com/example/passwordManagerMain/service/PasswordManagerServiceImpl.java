@@ -1,6 +1,8 @@
 package com.example.passwordManagerMain.service;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,15 +38,26 @@ public class PasswordManagerServiceImpl implements PasswordManagerService{
 		else
 			return pmd.save(passwordDetails);
 	}
+	
 	@Override
-	public PasswordDetails findById(Long id) {
+	public Optional<PasswordDetails> findById(Long id) {
 		
-		return pmd.getById(id);
+		return pmd.findById(id);
 	}
 	@Override
 	public void deleteById(Long id) {
 		pmd.deleteById(id);
 		
+	}
+	@Override
+	public void deleteAllById(List<Long> ids) {
+		ids.forEach(s -> pmd.deleteById(s));
+		/*for(Long id :ids)
+			pmd.deleteById(id);*/
+	}
+	@Override
+	public void deleteAll() {
+		pmd.deleteAll();
 	}
 
 	

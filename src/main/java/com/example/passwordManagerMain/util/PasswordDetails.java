@@ -1,5 +1,7 @@
 package com.example.passwordManagerMain.util;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,7 +15,13 @@ import javax.persistence.Id;
 
 
 @Entity
-public class PasswordDetails {
+public class PasswordDetails implements Serializable {
+
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private Long id;
 	

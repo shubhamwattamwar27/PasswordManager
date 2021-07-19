@@ -59,7 +59,7 @@ public class PasswordManagerController {
 	@GetMapping("/getSpecificCompany/{id}")
 	public String getSpecificCompany(@PathVariable long id,Model map,RedirectAttributes flashMap) {
 		System.out.println("in show getSpecificCompany form");
-		PasswordDetails passwordDetails = passwordManagerService.findById(id);
+		PasswordDetails passwordDetails = passwordManagerService.findById(id).get();
 		map.addAttribute("createDetails",passwordDetails);
 		flashMap.addFlashAttribute("id",passwordDetails.getId());
 		flashMap.addFlashAttribute("name",passwordDetails.getWebSiteName());
