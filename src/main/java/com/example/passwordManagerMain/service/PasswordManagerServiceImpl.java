@@ -51,7 +51,8 @@ public class PasswordManagerServiceImpl implements PasswordManagerService{
 	}
 	@Override
 	public void deleteAllById(List<Long> ids) {
-		ids.forEach(s -> pmd.deleteById(s));
+		pmd.deleteAllByIdInBatch(ids);
+		//ids.forEach(s -> pmd.deleteById(s));
 		/*for(Long id :ids)
 			pmd.deleteById(id);*/
 	}
